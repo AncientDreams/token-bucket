@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: token-bucket
+  redis:
+    password:
+    database:
+    host:
+    timeout: 10000
+
+
+
+

@@ -26,9 +26,12 @@ public class LocalTokenBucket extends AbstactTokenBucket {
 
 
     @Override
-    public synchronized boolean decreaseCapacity(String key) throws Exception {
-        Bucket bucket = this.getNowCapacity(key);
-        return bucket != null;
+    public boolean decreaseCapacity(String key) throws Exception {
+        Bucket tokenBucket = getTokenBucket(key);
+        synchronized (tokenBucket){
+            Bucket bucket = this.getNowCapacity(key);
+            return bucket != null;
+        }
     }
 
     @Override
